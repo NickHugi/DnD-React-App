@@ -1,0 +1,26 @@
+.spell {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    align-items: center ;
+}
+
+.spell a {
+    text-decoration: none;
+}
+
+.isFavourite {
+    color: yellow;
+    cursor: pointer;
+    user-select: none;
+    font-size: 2em;
+    text-shadow: 2px 2px 2px black;
+}
+
+.isNotFavourite {
+    color: black;
+    cursor: pointer;
+    user-select: none;
+    font-size: 2em;
+}

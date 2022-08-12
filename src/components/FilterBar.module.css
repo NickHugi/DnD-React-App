@@ -1,0 +1,17 @@
+.filterbar {
+    position: sticky;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.filterbar input {
+    flex-grow: 1;
+}
+
+.filterbar button {
+    height: 2.5em;
+    width: 12em;
+}
