@@ -1,15 +1,22 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import classes from './Spell.module.css';
 
-const Spell = (props) => {
-    function addFavouriteHandler(index) {
+type Props = {
+    onFavourite: CallableFunction,
+    onUnfavourite: CallableFunction,
+    isFavourite: boolean,
+    index: string,
+    spellName: string
+}
+
+const Spell = (props: Props) => {
+    function addFavouriteHandler(index: string) {
        props.onFavourite(index);
     }
 
-    function removeFavouriteHandler(index) {
+    function removeFavouriteHandler(index: string) {
         props.onUnfavourite(index);
     }
 

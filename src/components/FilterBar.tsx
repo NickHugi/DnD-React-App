@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 import classes from './FilterBar.module.css';
 
-const FilterBar = (props) => {
-    const textChangeHandler = (event) => {
+type Props = {
+    onChangeSpellFilter: CallableFunction,
+    onHideNonFavourites: CallableFunction,
+    onShowNonFavourites: CallableFunction,
+    hideNonFavourites: boolean
+};
+
+const FilterBar = (props: Props) => {
+    const textChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         props.onChangeSpellFilter(event.target.value);
     }
 
-    const hideButtonHandler = (event) => {
+    const hideButtonHandler = () => {
         props.onHideNonFavourites();
     }
 
-    const showAllButtonHandler = (event) => {
+    const showAllButtonHandler = () => {
         props.onShowNonFavourites();
     }
 

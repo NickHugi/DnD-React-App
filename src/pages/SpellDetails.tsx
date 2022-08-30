@@ -6,14 +6,14 @@ import LoadFailure from '../components/LoadFailure';
 
 import classes from './SpellDetails.module.css';
 
-const SpellDetails = (props) => {
+const SpellDetails = () => {
     const params = useParams();
 
     // spellData states include:
     //  - null => loading
     //  - undefined => failed to load
     //  - {...} => loaded
-    const [spellData, setSpellData] = useState(null);
+    const [spellData, setSpellData] = useState<any>(null);
 
     function fetchSpellDetails() {
         axios.get('http://www.dnd5eapi.co/api/spells/' + params.spellIndex)
@@ -43,7 +43,7 @@ const SpellDetails = (props) => {
 
         return (
             <div className={classes['spell-details']}>
-                <h1>{spellData.name}</h1>
+                <h1>{spellData['name']}</h1>
 
                 <hr />
 
@@ -60,7 +60,7 @@ const SpellDetails = (props) => {
 
                 <hr />
 
-                <p>{spellData.desc}</p>
+                <p>{spellData['desc']}</p>
 
                 <hr />
 
@@ -72,22 +72,21 @@ const SpellDetails = (props) => {
 
                 <p>
                     <b>Components:</b>
-                    {spellData['components'].map((spellComp) => <span key={spellComp} className={classes["bubble"]}>{spellComp}</span>)}
+                    {spellData['components'].map((spellComp: any) => <span key={spellComp} className={classes["bubble"]}>{spellComp}</span>)}
                 </p>
 
                 <p>
                     <b>Classes: </b>
-                    {spellData['classes'].map((spellClass) => <span key={spellClass.name} className={classes["bubble"]}>{spellClass.name}</span>)}
+                    {spellData['classes'].map((spellClass: any) => <span key={spellClass.name} className={classes["bubble"]}>{spellClass.name}</span>)}
                 </p>
 
                 <p>
                     <b>Subclasses: </b>
-                    {spellData['subclasses'].map((spellSubclass) => <span key={spellSubclass.name} className={classes["bubble"]}>{spellSubclass.name}</span>)}
+                    {spellData['subclasses'].map((spellSubclass: any) => <span key={spellSubclass.name} className={classes["bubble"]}>{spellSubclass.name}</span>)}
                 </p>
             </div>
         )
     }
 }
 
-// <b>Damage Type:</b> {spellData['damage']['damage_type']['name']} <br />
 export default SpellDetails;

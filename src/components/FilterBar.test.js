@@ -1,6 +1,6 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
-import FilterBar from "./FilterBar";
+import FilterBar from './FilterBar';
 
 const onChangeSpellFilter = jest.fn();
 const onHideNonFavourites = jest.fn();

@@ -1,12 +1,13 @@
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import './App.css';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import SpellDetails from './pages/SpellDetails';
 import Spells from './pages/Spells';
+import './App.css';
 
-function App() {
+const App = () => {
     return (
         <div className="app">
             <BrowserRouter>
@@ -14,9 +15,9 @@ function App() {
 
                 <div className="page">
                     <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route exact path="/spells/" element={<Spells />} />
-                        <Route exact path="/spells/:spellIndex" element={<SpellDetails />} />
+                        <Route path="/*" element={<Home />} />
+                        <Route path="/spells/" element={<Spells />} />
+                        <Route path="/spells/:spellIndex" element={<SpellDetails />} />
                     </Routes>
                 </div>
             </BrowserRouter>

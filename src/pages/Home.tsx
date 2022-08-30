@@ -1,7 +1,8 @@
+import React from 'react';
 
 import classes from './Home.module.css';
 
-function Home() {
+const Home = () => {
     return (
         <div className={classes['home']}>
             <p>

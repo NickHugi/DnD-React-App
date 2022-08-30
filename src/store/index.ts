@@ -1,6 +1,12 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
-const initialState = { favourites: JSON.parse(localStorage.getItem("favourites")) || [] }
+interface FavouritesState {
+    favourites: Array<string>
+}
+
+const initialState: FavouritesState = {
+    favourites: JSON.parse(localStorage.getItem("favourites")!) || []
+}
 
 const spellsSlice = createSlice({
     name: 'spells',
@@ -32,5 +38,6 @@ const store = configureStore({
 });
 
 export const spellsActions = spellsSlice.actions;
+export {FavouritesState};
 
 export default store;
