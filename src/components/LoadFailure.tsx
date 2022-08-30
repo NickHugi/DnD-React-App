@@ -1,9 +1,10 @@
 import React from 'react';
-import classes from './LoadFailure.module.css';
+
+import styles from './LoadFailure.module.css';
 
 const LoadFailure = () => {
     return (
-        <div className={classes['load-failure']}>
+        <div className={styles.loadFailure}>
             Failed to load.
         </div>
     );

@@ -7,7 +7,7 @@ import FilterBar from '../components/FilterBar';
 import SpellList from '../components/SpellList';
 import DiceLoader from '../components/DiceLoader';
 import LoadFailure from '../components/LoadFailure';
-import classes from './Spells.module.css';
+import styles from './Spells.module.css';
 
 const Spells = () => {
     const [ filterSpell, setFilterSpell ] = useState("");

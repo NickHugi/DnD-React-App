@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 
-import classes from './FilterBar.module.css';
+import styles from './FilterBar.module.css';
 
 type Props = {
     onChangeSpellFilter: CallableFunction,
@@ -23,7 +23,7 @@ const FilterBar = (props: Props) => {
     }
 
     return (
-        <div className={classes["filterbar"]}>
+        <div className={styles.filterbar}>
             <input type='text' placeholder='filter...' onChange={textChangeHandler} />
 
             {!props.hideNonFavourites && <button onClick={hideButtonHandler}>Show Favourites Only</button>}

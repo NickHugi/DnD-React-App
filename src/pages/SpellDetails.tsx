@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import DiceLoader from '../components/DiceLoader';
 import LoadFailure from '../components/LoadFailure';
 
-import classes from './SpellDetails.module.css';
+import styles from './SpellDetails.module.css';
 
 const SpellDetails = () => {
     const params = useParams();
@@ -42,12 +42,12 @@ const SpellDetails = () => {
         let attackType = spellData['attack_type'] ? spellData['attack_type'] : "N/A";
 
         return (
-            <div className={classes['spell-details']}>
+            <div className={styles.spellDetails}>
                 <h1>{spellData['name']}</h1>
 
                 <hr />
 
-                <div className={classes["databox"]}>
+                <div className={styles.databox}>
                     <div> <b>Level</b> <br/> {spellData['level']} </div>
                     <div> <b>Duration</b> <br/> {spellData['duration']} </div>
                     <div> <b>Casting Time</b> <br/> {spellData['casting_time']} </div>
@@ -72,17 +72,17 @@ const SpellDetails = () => {
 
                 <p>
                     <b>Components:</b>
-                    {spellData['components'].map((spellComp: any) => <span key={spellComp} className={classes["bubble"]}>{spellComp}</span>)}
+                    {spellData.components.map((spellComp: any) => <span key={spellComp} className={styles.bubble}>{spellComp}</span>)}
                 </p>
 
                 <p>
                     <b>Classes: </b>
-                    {spellData['classes'].map((spellClass: any) => <span key={spellClass.name} className={classes["bubble"]}>{spellClass.name}</span>)}
+                    {spellData.classes.map((spellClass: any) => <span key={spellClass.name} className={styles.bubble}>{spellClass.name}</span>)}
                 </p>
 
                 <p>
                     <b>Subclasses: </b>
-                    {spellData['subclasses'].map((spellSubclass: any) => <span key={spellSubclass.name} className={classes["bubble"]}>{spellSubclass.name}</span>)}
+                    {spellData.subclasses.map((spellSubclass: any) => <span key={spellSubclass.name} className={styles.bubble}>{spellSubclass.name}</span>)}
                 </p>
             </div>
         )

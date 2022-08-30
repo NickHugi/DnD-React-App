@@ -2,7 +2,7 @@ import React from 'react';
 
 import SpellModel from '../models/spell';
 import Spell from './Spell';
-import classes from './SpellList.module.css';
+import styles from './SpellList.module.css';
 
 type Props = {
     onFavourite: CallableFunction,
@@ -16,7 +16,7 @@ type Props = {
 const SpellList = (props: Props) => {
     // TODO use spells.filter
     return (
-        <ul className={classes['spell-list']}>
+        <ul className={styles.spellList}>
             {props.spells.map((spell: SpellModel) => (
                 spell.name.toLowerCase().includes(props.filterName.toLowerCase())
                 &&

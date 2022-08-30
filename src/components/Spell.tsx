@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import classes from './Spell.module.css';
+import styles from './Spell.module.css';
 
 type Props = {
     onFavourite: CallableFunction,
@@ -21,11 +21,11 @@ const Spell = (props: Props) => {
     }
 
     return (
-        <li className={classes['spell']}>
+        <li className={styles.spell}>
             <NavLink to={"/spells/" + props.index}>{props.spellName}</NavLink>
             
-            {props.isFavourite && <span className={classes['isFavourite']} onClick={() => removeFavouriteHandler(props.index)}>★</span>}
-            {!props.isFavourite && <span className={classes['isNotFavourite']} onClick={() => addFavouriteHandler(props.index)}>★</span>}
+            {props.isFavourite && <span className={styles.isFavourite} onClick={() => removeFavouriteHandler(props.index)}>★</span>}
+            {!props.isFavourite && <span className={styles.isNotFavourite} onClick={() => addFavouriteHandler(props.index)}>★</span>}
         </li>
     )
 }
