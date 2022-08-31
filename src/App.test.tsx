@@ -1,13 +1,14 @@
+import React from 'react';
 import { fireEvent, render, screen, waitForElementToBeRemoved, within } from '@testing-library/react';
 import axios from 'axios';
-import preview from 'jest-preview';
 import { Provider } from 'react-redux';
 import { act } from 'react-test-renderer';
 
 import App from './App';
 import store from './store';
 
-let spy;
+
+let spy: jest.SpyInstance;
 
 beforeAll(() => {
     spy = jest.spyOn(axios, "get");
@@ -65,7 +66,7 @@ test("Add a favourite and verify it through the filter", async () => {
     await waitForElementToBeRemoved(screen.getByAltText("Loading..."));
 
     // Click to add Acid Arrow to our favourites
-    let acidArrowContainer = screen.getByText("Acid Arrow").closest("li");
+    let acidArrowContainer = screen.getByText("Acid Arrow").closest("li")!;
     await act(async () => {
         fireEvent.click(within(acidArrowContainer).getByText("★"));
     });

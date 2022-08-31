@@ -1,14 +1,16 @@
-import { fireEvent, getByAltText, getByTestId, render, screen, waitFor, waitForElementToBeRemoved, within } from "@testing-library/react";
+import React from 'react';
+import { fireEvent, render, RenderResult, screen, within } from "@testing-library/react";
 import axios from "axios";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { act } from "react-test-renderer";
-import store from "../store";
 
+import store from "../store";
 import Spells from "./Spells";
 
-let root;
-let spy;
+
+let spy: jest.SpyInstance;
+let root: RenderResult;
 
 const mockSpellsResponse = {
     count: 2,
@@ -50,7 +52,7 @@ test("Editing filter text will hide unrelated items", async () => {
 });
 
 test("Add favourite and then remove favourited spell", async () => {
-    let acidArrowContainer = screen.getByText("Acid Arrow").closest("li");
+    let acidArrowContainer = screen.getByText("Acid Arrow").closest("li")!;
 
     // Test setting acid-arrow as favourite
     await act(async () => {
@@ -67,7 +69,7 @@ test("Add favourite and then remove favourited spell", async () => {
 
 test("Filter out non-favourite spells", async () => {
     // Set acid-arrow as favourite
-    let acidArrowContainer = screen.getByText("Acid Arrow").closest("li");
+    let acidArrowContainer = screen.getByText("Acid Arrow").closest("li")!;
     await act(async () => {
         fireEvent.click(within(acidArrowContainer).getByText("★"));
     });

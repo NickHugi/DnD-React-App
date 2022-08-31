@@ -1,15 +1,14 @@
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import React from 'react';
+import { render, RenderResult, screen, within } from "@testing-library/react";
 import axios from "axios";
-import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { act } from "react-test-renderer";
-import store from "../store";
+import { act } from 'react-test-renderer';
+
 import SpellDetails from "./SpellDetails";
 
-import Spells from "./Spells";
 
-let spy;
-let root;
+let spy: jest.SpyInstance;
+let root: RenderResult;
 
 async function mockRender() {
     root = render(
@@ -45,7 +44,7 @@ test("Ritual displays correctly when true", async () => {
     spy.mockReturnValue(Promise.resolve( {data: mockSpellDetails, ritual: true} ));
     await mockRender();
 
-    let ritualContainer = screen.getByText("Ritual").closest("div");
+    let ritualContainer = screen.getByText("Ritual").closest("div")!;
     expect(within(ritualContainer).getByText("Yes")).toBeInTheDocument();
 });
 
@@ -54,7 +53,7 @@ test("Ritual displays correctly when false", async () => {
     spy.mockReturnValue(Promise.resolve( {data: {...mockSpellDetails, ritual: false}} ));
     await mockRender();
 
-    let ritualContainer = screen.getByText("Ritual").closest("div");
+    let ritualContainer = screen.getByText("Ritual").closest("div")!;
     expect(within(ritualContainer).getByText("No")).toBeInTheDocument();
 });
 
@@ -63,8 +62,7 @@ test("Concentration displays correctly when true", async () => {
     spy.mockReturnValue(Promise.resolve( {data: {...mockSpellDetails, concentration: true}} ));
     await mockRender();
 
-    let concentrationContainer = screen.getByText("Concentration").closest("div");
-    console.log(concentrationContainer.outerHTML)
+    let concentrationContainer = screen.getByText("Concentration").closest("div")!;
     expect(within(concentrationContainer).getByText("Yes")).toBeInTheDocument();
 });
 
@@ -73,7 +71,7 @@ test("Concentration displays correctly when false", async () => {
     spy.mockReturnValue(Promise.resolve( {data: {...mockSpellDetails, concentration: false}} ));
     await mockRender();
 
-    let concentrationContainer = screen.getByText("Concentration").closest("div");
+    let concentrationContainer = screen.getByText("Concentration").closest("div")!;
     expect(within(concentrationContainer).getByText("No")).toBeInTheDocument();
 });
 
@@ -82,7 +80,7 @@ test("Attack type displayes correctly when no attack type specified", async () =
     spy.mockReturnValue(Promise.resolve( {data: {...mockSpellDetails, attack_type: undefined}} ));
     await mockRender();
 
-    let attackTypeContainer = screen.getByText("Attack Type").closest("div");
+    let attackTypeContainer = screen.getByText("Attack Type").closest("div")!;
     expect(within(attackTypeContainer).getByText("N/A")).toBeInTheDocument();
 });
 
@@ -91,6 +89,6 @@ test("Attack type displayes correctly when no attack type specified", async () =
     spy.mockReturnValue(Promise.resolve( {data: {...mockSpellDetails, attack_type: "Ranged"}} ));
     await mockRender();
 
-    let attackTypeContainer = screen.getByText("Attack Type").closest("div");
+    let attackTypeContainer = screen.getByText("Attack Type").closest("div")!;
     expect(within(attackTypeContainer).getByText("Ranged")).toBeInTheDocument();
 });

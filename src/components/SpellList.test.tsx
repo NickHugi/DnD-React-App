@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
 import SpellList from "./SpellList";
-import { getAllByLabelText, render, screen, waitFor } from '@testing-library/react';
-import { BrowserRouter } from "react-router-dom";
 
 
 describe("SpellList component", () => {
@@ -29,6 +29,8 @@ describe("SpellList component", () => {
                     favourites={mockFavourites}
                     filterName=""
                     hideNonFavourites={false}
+                    onFavourite={() => {}}
+                    onUnfavourite={() => {}}
                 />
             </BrowserRouter>
         );
@@ -45,6 +47,8 @@ describe("SpellList component", () => {
                     favourites={mockFavourites}
                     filterName=""
                     hideNonFavourites={true}
+                    onFavourite={() => {}}
+                    onUnfavourite={() => {}}
                 />
             </BrowserRouter>
         );
@@ -61,6 +65,8 @@ describe("SpellList component", () => {
                     favourites={mockFavourites}
                     filterName="splash"
                     hideNonFavourites={false}
+                    onFavourite={() => {}}
+                    onUnfavourite={() => {}}
                 />
             </BrowserRouter>
         );

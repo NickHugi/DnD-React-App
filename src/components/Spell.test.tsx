@@ -1,11 +1,11 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { createMemoryHistory } from "history";
-import { BrowserRouter, Routes } from "react-router-dom";
+import React from 'react';
+import { fireEvent, render, RenderResult, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 
 import Spell from "./Spell";
 
 describe("non-favourited spell", () => {
-    let root;
+    let root: RenderResult;
 
     const onFavourite = jest.fn();
     const onUnfavourite = jest.fn();
@@ -37,7 +37,7 @@ describe("non-favourited spell", () => {
 });
 
 describe("non-favourited spell", () => {
-    let spell;
+    let spell: RenderResult;
 
     const onFavourite = jest.fn();
     const onUnfavourite = jest.fn();
